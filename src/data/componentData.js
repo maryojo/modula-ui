@@ -6,6 +6,7 @@ import { alert } from "@/library/components/Alert";
 import { modal } from "@/library/components/Modal";
 import { toggle } from "@/library/components/Toggle";
 import { textarea } from "@/library/components/Textarea";
+import { VideoConference } from "@/library/pages/VideoConference";
 
 
 export const components = {
@@ -17,4 +18,5 @@ export const components = {
   modal,
   toggle,
   textarea,
+  VideoConference
 };

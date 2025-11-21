@@ -17,12 +17,12 @@ export default function PreviewCard({ children, title = "Preview" }) {
           <title>${title}</title>
           <script src="https://cdn.tailwindcss.com"></script>
           <style>
-            body { margin: 0; padding: 2rem; background: #f9fafb; }
+            body { margin: 0; background: #f9fafb; }
             @media (prefers-color-scheme: dark) { body { background: #111827; } }
           </style>
         </head>
         <body class="min-h-screen flex items-center justify-center">
-          <div class="w-full max-w-5xl mx-auto">
+          <div class="w-full mx-auto">
             ${previewHTML}
           </div>
         </body>
