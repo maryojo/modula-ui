@@ -9,7 +9,7 @@ import CodeCard from '@/components/CodeCard';
 import { components } from '@/data/componentData';
 
 export default function Home() {
-  const [selected, setSelected] = useState('button');
+  const [selected, setSelected] = useState('FitnessOverview');
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const current = components[selected];
@@ -24,7 +24,7 @@ export default function Home() {
 
       <MobileOverlay open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="max-w-7xl mx-auto px-6 flex gap-6">
+      <div className="w-full mx-auto px-6 flex gap-6">
 
         <Sidebar
           selected={selected}
@@ -33,10 +33,12 @@ export default function Home() {
           onClose={() => setSidebarOpen(false)}
         />
 
-        <main className="space-y-6">
+        <main className="space-y-6 w-full">
           <PreviewCard>{current?.preview}</PreviewCard>
 
           <CodeCard code={current?.code} />
+
+          {/* add use case and tags to this */}
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">

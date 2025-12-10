@@ -24,7 +24,7 @@ export default function Patterns() {
 
       <MobileOverlay open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="max-w-7xl mx-auto px-6 flex gap-6">
+      <div className="w-full mx-auto px-6 flex gap-6">
 
         {sidebarOpen && <Sidebar
           selected={selected}
@@ -33,7 +33,7 @@ export default function Patterns() {
           onClose={() => setSidebarOpen(false)}
         />}
 
-        <main className="space-y-6">
+        <main className="space-y-6 w-full">
           <PreviewCard>{current?.preview}</PreviewCard>
 
           <CodeCard code={current?.code} />

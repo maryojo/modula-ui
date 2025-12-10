@@ -1,6 +1,3 @@
-// import { button } from "@/library/components/Button";
-// import { card } from "@/library/components/Card";
-// import { input } from "@/library/components/Input";
 // import { badge } from "@/library/components/Badge";
 // import { alert } from "@/library/components/Alert";
 // import { modal } from "@/library/components/Modal";
@@ -9,18 +6,12 @@
 import { VideoConference } from "@/library/pages/VideoConference";
 import { ReservationsOverview } from "@/library/pages/ReservationsOverview";
 import { FitnessOverview } from "@/library/pages/FitnessPage";
+import { GroupChat } from "@/library/pages/GroupChat";
 
 
 export const components = {
-  // button,
-  // card,
-  // input,
-  // badge,
-  // alert,
-  // modal,
-  // toggle,
-  // textarea,
   VideoConference,
+  GroupChat,
   ReservationsOverview,
   FitnessOverview
 };
