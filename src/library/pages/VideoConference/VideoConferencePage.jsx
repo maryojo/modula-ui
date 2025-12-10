@@ -101,12 +101,14 @@ export default function VideoConferencePage() {
                 {/* Main Stage */}
                 <main className="flex-1 flex flex-col gap-4 relative">
                     {/* Active Speaker */}
-                    <motion.div variants={itemVariants} className="flex-1 relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/5 group">
+                    <motion.div variants={itemVariants} className="flex-1 min-h-0 relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/5 group">
+                        <div className='h-64'>
                         <img
                             src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop"
                             alt="Active Speaker"
                             className="w-full h-full object-cover"
                         />
+                        </div>
 
                         {/* Top Right Controls */}
                         <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -135,59 +137,6 @@ export default function VideoConferencePage() {
                                         className="w-0.5 bg-white rounded-full"
                                     />
                                 ))}
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Participants Grid (Bottom) */}
-                    <motion.div variants={itemVariants} className="h-40 grid grid-cols-4 gap-4">
-                        {/* Participant 1 */}
-                        <div className="relative rounded-2xl overflow-hidden bg-zinc-800 group">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2561&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Participant" />
-                            <div className="absolute bottom-2 left-2 bg-black/40 backdrop-blur-md px-2 py-1 rounded-lg text-xs font-medium">
-                                Maria Mango
-                            </div>
-                            <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-md p-1.5 rounded-full">
-                                <MicOff className="w-3 h-3 text-red-400" />
-                            </div>
-                        </div>
-                        {/* Participant 2 */}
-                        <div className="relative rounded-2xl overflow-hidden bg-zinc-800 group">
-                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2680&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Participant" />
-                            <div className="absolute bottom-2 left-2 bg-black/40 backdrop-blur-md px-2 py-1 rounded-lg text-xs font-medium">
-                                Jordyn Bergson
-                            </div>
-                            <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-md p-1.5 rounded-full">
-                                <MicOff className="w-3 h-3 text-red-400" />
-                            </div>
-                        </div>
-                        {/* Participant 3 */}
-                        <div className="relative rounded-2xl overflow-hidden bg-zinc-800 group">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2670&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Participant" />
-                            <div className="absolute bottom-2 left-2 bg-black/40 backdrop-blur-md px-2 py-1 rounded-lg text-xs font-medium">
-                                Maria Carder
-                            </div>
-                            <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-md p-1.5 rounded-full">
-                                <MicOff className="w-3 h-3 text-red-400" />
-                            </div>
-                        </div>
-                        {/* Participant 4 (You) */}
-                        <div className="relative rounded-2xl overflow-hidden bg-zinc-800 border-2 border-[#8B5CF6] group">
-                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=2574&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Participant" />
-                            <div className="absolute bottom-2 left-2 bg-black/40 backdrop-blur-md px-2 py-1 rounded-lg text-xs font-medium">
-                                You
-                            </div>
-                            <div className="absolute bottom-2 right-2 bg-[#8B5CF6] p-1.5 rounded-full">
-                                <div className="flex gap-0.5 items-center h-3">
-                                    {[1, 2, 1].map((h, i) => (
-                                        <motion.div
-                                            key={i}
-                                            animate={{ height: [h * 2, h * 5, h * 2] }}
-                                            transition={{ duration: 0.4 + i * 0.1, repeat: Infinity }}
-                                            className="w-0.5 bg-white rounded-full"
-                                        />
-                                    ))}
-                                </div>
                             </div>
                         </div>
                     </motion.div>
@@ -244,6 +193,58 @@ export default function VideoConferencePage() {
                         </motion.button>
                     </motion.div>
                 </main>
+                                    {/* Participants Grid (Bottom) */}
+                    <motion.div variants={itemVariants} className="h-40 grid grid-cols-4 gap-4">
+                        {/* Participant 1 */}
+                        <div className="relative rounded-2xl overflow-hidden bg-zinc-800 group">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2561&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Participant" />
+                            <div className="absolute bottom-2 left-2 bg-black/40 backdrop-blur-md px-2 py-1 rounded-lg text-xs font-medium">
+                                Maria Mango
+                            </div>
+                            <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-md p-1.5 rounded-full">
+                                <MicOff className="w-3 h-3 text-red-400" />
+                            </div>
+                        </div>
+                        {/* Participant 2 */}
+                        <div className="relative rounded-2xl overflow-hidden bg-zinc-800 group">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2680&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Participant" />
+                            <div className="absolute bottom-2 left-2 bg-black/40 backdrop-blur-md px-2 py-1 rounded-lg text-xs font-medium">
+                                Jordyn Bergson
+                            </div>
+                            <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-md p-1.5 rounded-full">
+                                <MicOff className="w-3 h-3 text-red-400" />
+                            </div>
+                        </div>
+                        {/* Participant 3 */}
+                        <div className="relative rounded-2xl overflow-hidden bg-zinc-800 group">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2670&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Participant" />
+                            <div className="absolute bottom-2 left-2 bg-black/40 backdrop-blur-md px-2 py-1 rounded-lg text-xs font-medium">
+                                Maria Carder
+                            </div>
+                            <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-md p-1.5 rounded-full">
+                                <MicOff className="w-3 h-3 text-red-400" />
+                            </div>
+                        </div>
+                        {/* Participant 4 (You) */}
+                        <div className="relative rounded-2xl overflow-hidden bg-zinc-800 border-2 border-[#8B5CF6] group">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=2574&auto=format&fit=crop" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Participant" />
+                            <div className="absolute bottom-2 left-2 bg-black/40 backdrop-blur-md px-2 py-1 rounded-lg text-xs font-medium">
+                                You
+                            </div>
+                            <div className="absolute bottom-2 right-2 bg-[#8B5CF6] p-1.5 rounded-full">
+                                <div className="flex gap-0.5 items-center h-3">
+                                    {[1, 2, 1].map((h, i) => (
+                                        <motion.div
+                                            key={i}
+                                            animate={{ height: [h * 2, h * 5, h * 2] }}
+                                            transition={{ duration: 0.4 + i * 0.1, repeat: Infinity }}
+                                            className="w-0.5 bg-white rounded-full"
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
             </div>
 
             {/* Right Sidebar */}

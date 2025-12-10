@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 export default function PreviewCard({ children, title = "Preview" }) {
-  const [isOpened, setIsOpened] = useState(false);
+  const [externalWindow, setExternalWindow] = useState(null);
+  const [containerElement, setContainerElement] = useState(null);
 
   const openFullPreview = () => {
-    if (isOpened) return;
+    if (externalWindow) {
+      externalWindow.focus();
+      return;
+    }
 
-    const previewHTML = document.getElementById("preview-content")?.innerHTML || "";
+    const newWindow = window.open("", "_blank", "width=1200,height=800,left=200,top=200");
+    if (!newWindow) return;
 
     const fullPage = `
       <!DOCTYPE html>
@@ -22,20 +28,43 @@ export default function PreviewCard({ children, title = "Preview" }) {
           </style>
         </head>
         <body class="min-h-screen flex items-center justify-center">
-          <div class="w-full mx-auto">
-            ${previewHTML}
-          </div>
+          <div id="root" class="w-full mx-auto"></div>
         </body>
       </html>
     `;
 
-    const newTab = window.open("", "_blank");
-    if (newTab) {
-      newTab.document.write(fullPage);
-      newTab.document.close();
-      setIsOpened(true);
+    newWindow.document.write(fullPage);
+    newWindow.document.close();
+
+    // Wait for the window to load before trying to access the DOM
+    newWindow.onload = () => {
+      const container = newWindow.document.getElementById("root");
+      setExternalWindow(newWindow);
+      setContainerElement(container);
+    };
+
+    // In case onload fired synchronously or we missed it (rare with open, but good safety)
+    if (newWindow.document.readyState === 'complete') {
+      const container = newWindow.document.getElementById("root");
+      setExternalWindow(newWindow);
+      setContainerElement(container);
     }
+
+    // Handle window close
+    newWindow.onbeforeunload = () => {
+      setExternalWindow(null);
+      setContainerElement(null);
+    };
   };
+
+  // Close external window when component unmounts
+  useEffect(() => {
+    return () => {
+      if (externalWindow) {
+        externalWindow.close();
+      }
+    };
+  }, [externalWindow]);
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
@@ -44,27 +73,26 @@ export default function PreviewCard({ children, title = "Preview" }) {
 
         <button
           onClick={openFullPreview}
-          disabled={isOpened}
           className={`flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md transition
-            ${isOpened 
-              ? "text-gray-400 bg-gray-100 cursor-not-allowed" 
-              : "text-gray-700 bg-gray-50 hover:bg-gray-100 hover:text-gray-900"
-            }`}
+            text-gray-700 bg-gray-50 hover:bg-gray-100 hover:text-gray-900`}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
-          {isOpened ? "Opened" : "Open in new tab"}
+          Open in new tab
         </button>
       </div>
 
-      {/* The preview area – we give it an ID so we can grab its HTML */}
+      {/* The preview area in the main window */}
       <div
         id="preview-content"
         className="bg-gray-50 rounded-lg p-8 border border-dashed border-gray-300 min-h-96 flex items-center justify-center"
       >
         {children}
       </div>
+
+      {/* Render content into the new window if it exists */}
+      {containerElement && createPortal(children, containerElement)}
     </div>
   );
 }

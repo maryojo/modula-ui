@@ -34,9 +34,9 @@ export default function Home() {
         />
 
         <main className="space-y-6">
-          <PreviewCard>{current.preview}</PreviewCard>
+          <PreviewCard>{current?.preview}</PreviewCard>
 
-          <CodeCard code={current.code} />
+          <CodeCard code={current?.code} />
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">

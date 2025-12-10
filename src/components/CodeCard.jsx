@@ -9,7 +9,7 @@ export default function CodeCard({ code }) {
       </div>
 
       <pre className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto text-xs md:text-sm">
-        <code>{code.trim()}</code>
+        <code>{code?.trim()}</code>
       </pre>
     </div>
   );

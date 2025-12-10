@@ -1,0 +1,47 @@
+{
+    "alert": {
+        "name": "Alert",
+        "type": "components",
+        "path": "src/library/components/Alert.jsx"
+    },
+    "badge": {
+        "name": "Badge",
+        "type": "components",
+        "path": "src/library/components/Badge.jsx"
+    },
+    "button": {
+        "name": "Button",
+        "type": "components",
+        "path": "src/library/components/Button.jsx"
+    },
+    "card": {
+        "name": "Card",
+        "type": "components",
+        "path": "src/library/components/Card.jsx"
+    },
+    "input": {
+        "name": "Input",
+        "type": "components",
+        "path": "src/library/components/Input.jsx"
+    },
+    "modal": {
+        "name": "Modal",
+        "type": "components",
+        "path": "src/library/components/Modal.jsx"
+    },
+    "textarea": {
+        "name": "Textarea",
+        "type": "components",
+        "path": "src/library/components/Textarea.jsx"
+    },
+    "toggle": {
+        "name": "Toggle",
+        "type": "components",
+        "path": "src/library/components/Toggle.jsx"
+    },
+    "video-conference": {
+        "name": "VideoConference",
+        "type": "pages",
+        "path": "src/library/pages/VideoConference/VideoConferencePage.jsx"
+    }
+}
