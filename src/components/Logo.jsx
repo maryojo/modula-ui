@@ -3,24 +3,24 @@ import React from 'react';
 const Logo = ({ className = '' }) => {
     return (
         <svg
-            width="180"
+            width="215"
             height="50"
-            viewBox="0 0 180 50"
+            viewBox="0 0 215 50"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={className}
         >
-            {/* Icon Element - Abstract 'N' or Tech shape */}
+            {/* Icon Element - Abstract 'M' */}
             <circle cx="25" cy="25" r="20" fill="url(#grad1)" opacity="0.2" />
             <path
-                d="M15 35V15L35 35V15"
+                d="M15 35V15L25 25L35 15V35"
                 stroke="url(#grad2)"
                 strokeWidth="4"
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
 
-            {/* Text 'nora' */}
+            {/* Text 'modula ui' */}
             <text
                 x="55"
                 y="32"
@@ -30,20 +30,7 @@ const Logo = ({ className = '' }) => {
                 fill="#111827"
                 letterSpacing="-1"
             >
-                nora
-            </text>
-
-            {/* Text '-ui' with different style */}
-            <text
-                x="115"
-                y="32"
-                fontFamily="system-ui, -apple-system, sans-serif"
-                fontWeight="800"
-                fontSize="28"
-                fill="#111827"
-                letterSpacing="-1"
-            >
-                ui
+                modula ui
             </text>
 
             {/* Gradients */}

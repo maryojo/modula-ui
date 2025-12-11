@@ -9,7 +9,7 @@ export default function Header({ sidebarOpen, toggleSidebar }) {
       <div className="mb-8 flex items-center justify-between">
         <div>
           <Logo />
-          <p className="text-gray-600">A library of modern interfaces with great UX built with Shadcn</p>
+          <p className="text-gray-600">A library of modern interfaces and UI patterns with great UX built with Shadcn</p>
         </div>
 
         <button

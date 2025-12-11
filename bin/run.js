@@ -17,7 +17,7 @@ if (command === 'add') {
   const componentName = args[1];
   
   if (!componentName) {
-    console.error('Please specify a component name: npx nora-ui add <component-name>');
+    console.error('Please specify a component name: npx modula-ui add <component-name>');
     process.exit(1);
   }
 

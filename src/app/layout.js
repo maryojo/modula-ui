@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Nora UI",
-  description: "A library of modern interfaces with great UX built with Shadcn",
+  title: "Modula UI",
+  description: "A library of modern interfaces and UI patterns with great UX built with Shadcn",
 };
 
 export default function RootLayout({ children }) {
