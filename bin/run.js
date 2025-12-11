@@ -6,12 +6,62 @@ import { parse } from 'url';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const packageRoot = path.join(__dirname, '..');
 
 const args = process.argv.slice(2);
 const command = args[0];
+
+const getPackageManager = async () => {
+  const userRoot = process.cwd();
+  try {
+    await fs.access(path.join(userRoot, 'pnpm-lock.yaml'));
+    return 'pnpm';
+  } catch {}
+  try {
+    await fs.access(path.join(userRoot, 'yarn.lock'));
+    return 'yarn';
+  } catch {}
+  try {
+    await fs.access(path.join(userRoot, 'bun.lockb'));
+    return 'bun';
+  } catch {}
+  return 'npm';
+};
+
+const installDependencies = async (dependencies) => {
+  if (!dependencies || dependencies.length === 0) return;
+  
+  const pm = await getPackageManager();
+  const installCmd = pm === 'npm' ? 'install' : 'add';
+  const cmd = `${pm} ${installCmd} ${dependencies.join(' ')}`;
+  
+  console.log(`\n📦 Installing dependencies: ${dependencies.join(', ')}...`);
+  try {
+    execSync(cmd, { stdio: 'inherit', cwd: process.cwd() });
+    console.log('✅ Dependencies installed.');
+  } catch (error) {
+    console.error('❌ Failed to install dependencies.');
+    // Don't exit, just warn
+  }
+};
+
+const installRegistryDependencies = (dependencies) => {
+  if (!dependencies || dependencies.length === 0) return;
+
+  console.log(`\n🎨 Installing UI components: ${dependencies.join(', ')}...`);
+  try {
+    // Attempt to use shadcn CLI
+    // We add -y to accept defaults if possible, but shadcn might still prompt
+    execSync(`npx shadcn@latest add ${dependencies.join(' ')} -y`, { stdio: 'inherit', cwd: process.cwd() });
+    console.log('✅ UI components installed.');
+  } catch (error) {
+    console.warn('⚠️  Failed to install UI components via shadcn. You might need to install them manually.');
+    console.warn(`   Run: npx shadcn@latest add ${dependencies.join(' ')}`);
+  }
+};
 
 if (command === 'add') {
   const componentName = args[1];
@@ -34,10 +84,20 @@ if (command === 'add') {
       process.exit(1);
     }
 
-    const sourcePath = path.join(packageRoot, component.path);
+    // 1. Install External Dependencies
+    if (component.dependencies) {
+      await installDependencies(component.dependencies);
+    }
+
+    // 2. Install Registry Dependencies (Shadcn components)
+    if (component.registryDependencies) {
+      installRegistryDependencies(component.registryDependencies);
+    }
+
+    // 3. Copy Files
+    const filesToCopy = component.files || [component.path];
     
-    // Determine destination path
-    // Check if src directory exists in the user's project
+    // Determine destination directory
     const userProjectRoot = process.cwd();
     const hasSrc = await fs.access(path.join(userProjectRoot, 'src')).then(() => true).catch(() => false);
     
@@ -45,16 +105,20 @@ if (command === 'add') {
       ? path.join(userProjectRoot, 'src', 'library', component.type)
       : path.join(userProjectRoot, 'library', component.type);
 
-    const destPath = path.join(destDir, path.basename(sourcePath));
-
     // Ensure destination directory exists
     await fs.mkdir(destDir, { recursive: true });
 
-    // Read and write file
-    const content = await fs.readFile(sourcePath, 'utf-8');
-    await fs.writeFile(destPath, content);
+    for (const filePath of filesToCopy) {
+      const sourcePath = path.join(packageRoot, filePath);
+      const fileName = path.basename(sourcePath);
+      const destPath = path.join(destDir, fileName);
 
-    console.log(`✓ Component ${component.name} added to ${path.relative(userProjectRoot, destPath)}`);
+      // Read and write file
+      const content = await fs.readFile(sourcePath, 'utf-8');
+      await fs.writeFile(destPath, content);
+      
+      console.log(`\n✨ Component file ${fileName} added to ${path.relative(userProjectRoot, destPath)}`);
+    }
 
   } catch (error) {
     console.error('Error adding component:', error);

@@ -2,11 +2,36 @@
     "video-conference": {
         "name": "VideoConference",
         "type": "pages",
-        "path": "src/library/pages/VideoConference/VideoConferencePage.jsx"
+        "path": "src/library/pages/VideoConference/VideoConferencePage.jsx",
+        "dependencies": [
+            "lucide-react",
+            "framer-motion",
+            "clsx",
+            "tailwind-merge"
+        ],
+        "registryDependencies": [
+            "avatar"
+        ]
     },
     "group-chat": {
         "name": "GroupChat",
         "type": "pages",
-        "path": "src/library/pages/GroupChat/GroupChatPage.jsx"
+        "path": "src/library/pages/GroupChat/GroupChat.jsx",
+        "files": [
+            "src/library/pages/GroupChat/GroupChat.jsx",
+            "src/library/pages/GroupChat/data.js"
+        ],
+        "dependencies": [
+            "lucide-react"
+        ],
+        "registryDependencies": [
+            "sidebar",
+            "avatar",
+            "badge",
+            "scroll-area",
+            "navigation-menu",
+            "input",
+            "button"
+        ]
     }
 }
