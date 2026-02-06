@@ -1,15 +1,22 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-export default function PreviewCard({ children, title = "Preview" }) {
+export default function PreviewCard({ children, title = "Preview", url }) {
   const [externalWindow, setExternalWindow] = useState(null);
   const [containerElement, setContainerElement] = useState(null);
 
   const openFullPreview = () => {
+    if (url) {
+      window.open(url, "_blank");
+      return;
+    }
+
     if (externalWindow) {
       externalWindow.focus();
       return;
     }
+
+    // ... existing logic ...
 
     const newWindow = window.open("", "_blank", "width=1200,height=800,left=200,top=200");
     if (!newWindow) return;

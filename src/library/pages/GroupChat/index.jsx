@@ -8,5 +8,6 @@ export const GroupChat = {
   code: "npx modula-ui add group-chat",
   preview: (
     <GroupChatCode />
-  )
+  ),
+  url: "/group-chat"
 }

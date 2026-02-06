@@ -8,5 +8,6 @@ export const VideoConference = {
   code: "npx modula-ui add video-conference",
   preview: (
     <VideoConferencePage />
-  )
+  ),
+  url: "/video-conference"
 }

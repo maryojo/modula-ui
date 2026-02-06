@@ -33,5 +33,24 @@
             "input",
             "button"
         ]
+    },
+    "login-page-01": {
+        "name": "Login Page 01",
+        "type": "blocks",
+        "path": "src/components/login-template/page.jsx",
+        "files": [
+            "src/components/login-template/page.jsx",
+            "src/components/login-template/particles-background.jsx"
+        ],
+        "dependencies": [
+            "@tsparticles/react",
+            "@tsparticles/slim"
+        ],
+        "registryDependencies": [
+            "button",
+            "card",
+            "input",
+            "label"
+        ]
     }
 }

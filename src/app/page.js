@@ -34,7 +34,7 @@ export default function Home() {
         />
 
         <main className="space-y-6 w-full">
-          <PreviewCard>{current?.preview}</PreviewCard>
+          <PreviewCard url={current?.url}>{current?.preview}</PreviewCard>
 
           <CodeCard code={current?.code} />
 

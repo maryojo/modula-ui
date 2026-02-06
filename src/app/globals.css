@@ -1,12 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-lexend);
+  --font-sans: var(--font-dm-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -122,5 +123,39 @@
 
   .lexend {
     font-family: var(--font-lexend), sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    /* Semi-transparent background – usually white or light tint */
+    background: rgba(255, 255, 255, 0.15);   /* 0.1 – 0.25 is most common */
+    
+    /* The magic line – blurs what's behind */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);     /* Safari support */
+    
+    /* Softer rounded corners */
+    border-radius: 16px;
+    
+    /* Subtle border that looks like glass edge */
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    
+    /* Optional – adds depth & modern feel */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    
+    /* Important for readability */
+    color: white;
+    padding: 2rem;
+  }
+
+  .glass-dark {
+    background: rgba(31, 31, 32, 0.75);     /* dark tint */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    color: #f0f0ff;
   }
 }
