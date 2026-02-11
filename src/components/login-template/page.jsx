@@ -6,15 +6,16 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ParticlesBackground } from "./particles-background"
 import logo from "../../../public/logo_cloudsync.png"
+import google from "../../../public/google.svg"
 import Image from "next/image"
 
 export default function LoginPage() {
     return (
-        <div className="dark font-sans relative w-full h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-end overflow-hidden bg-background text-foreground">
+        <div className="dark font-sans w-full h-full flex flex-col lg:flex-row items-center justify-center lg:justify-end overflow-hidden bg-background text-foreground">
             <ParticlesBackground />
 
-            <div className="relative z-10 w-full px-4 sm:px-6 md:px-20 py-6 md:py-12 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-28">
-                <div className="hidden md:block max-w-xs 2xl:max-w-lg space-y-4">
+            <div className=" z-10 px-4 sm:px-6 md:px-20 py-6 md:py-12 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-28">
+                <div className="hidden md:block space-y-4 w-1/2">
                     <div className="flex items-center gap-4 mb-4">
                         <Image
                             src={logo}
@@ -26,7 +27,7 @@ export default function LoginPage() {
                     <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">Secure, Scalable and Seamless</h3>
                     <p className="text-sm sm:text-base md:text-lg text-muted-foreground">Empowering businesses with world-class cloud computing infrastructure and 99.9% uptime. Managed, monitored and optimized for your growth.</p>
                 </div>
-                <Card className="w-full sm:w-[450px] glass-dark">
+                <Card className="w-full sm:w-1/2 glass-dark">
                     <CardHeader className="space-y-1 ">
                         <CardTitle className="text-xl sm:text-2xl font-bold tracking-tight">Welcome back</CardTitle>
                         <CardDescription className="text-sm sm:text-base text-muted-foreground/80">
@@ -37,8 +38,6 @@ export default function LoginPage() {
                         <div className="absolute inset-0 flex items-center">
                             <span className="w-full border-t border-muted-foreground/20" />
                         </div>
-                        {/* <div className="relative flex justify-center text-xs uppercase">
-              </div> */}
                     </div>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
@@ -65,9 +64,12 @@ export default function LoginPage() {
                         </div>
 
                         <Button variant="outline" className="w-full bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 hover:text-white text-sm sm:text-base" onClick={() => { }}>
-                            <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
-                                <path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
-                            </svg>
+                            <Image
+                                src={google}
+                                alt="Google"
+                                width={16}
+                                height={16}
+                            />
                             Google
                         </Button>
                     </CardContent>

@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Modula UI",
-  description: "A library of modern interfaces and UI patterns with great UX built with Shadcn",
+  description: "A library of beautiful modern UI blocks and patterns built with care and Shadcn by Mary Ojo",
 };
 
 export default function RootLayout({ children }) {

@@ -15,7 +15,7 @@ export default function Sidebar({ selected, onSelect, open, onClose }) {
       style={{ top: '1.5rem' }}   // matches Header padding
     >
       <div className="flex items-center justify-between mb-4 lg:mb-3">
-        <h2 className="font-semibold text-gray-700">Patterns</h2>
+        <h2 className="font-semibold text-gray-700">Blocks</h2>
         <button
           onClick={onClose}
           className="lg:hidden p-1 hover:bg-gray-100 rounded"

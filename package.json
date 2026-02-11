@@ -1,7 +1,7 @@
 {
   "name": "modula-ui",
   "version": "1.0.3",
-  "description": "A library of modern interfaces and UI patterns with great UX built with Shadcn",
+  "description": "A library of beautiful modern UI blocks and patterns built with Shadcn by Mary Ojo",
   "keywords": [
     "tailwind",
     "components",
@@ -28,9 +28,9 @@
     "registry.json"
   ],
   "scripts": {
-    "dev": "next dev -p 3177",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 3177"
+    "start": "next start"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.11",

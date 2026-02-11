@@ -13,27 +13,6 @@
             "avatar"
         ]
     },
-    "group-chat": {
-        "name": "GroupChat",
-        "type": "pages",
-        "path": "src/library/pages/GroupChat/GroupChat.jsx",
-        "files": [
-            "src/library/pages/GroupChat/GroupChat.jsx",
-            "src/library/pages/GroupChat/data.js"
-        ],
-        "dependencies": [
-            "lucide-react"
-        ],
-        "registryDependencies": [
-            "sidebar",
-            "avatar",
-            "badge",
-            "scroll-area",
-            "navigation-menu",
-            "input",
-            "button"
-        ]
-    },
     "login-page-01": {
         "name": "Login Page 01",
         "type": "blocks",

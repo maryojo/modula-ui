@@ -125,26 +125,28 @@ if (command === 'add') {
     process.exit(1);
   }
 
-} else {
-  // Default behavior: Start the Next.js server
-  const port = 3177;
-  const dev = false;
-  const app = next({ dev, dir: packageRoot });
-  const handle = app.getRequestHandler();
+} 
 
-  await app.prepare();
+// else {
+//   // Default behavior: Start the Next.js server
+//   const port = 3177;
+//   const dev = false;
+//   const app = next({ dev, dir: packageRoot });
+//   const handle = app.getRequestHandler();
 
-  createServer((req, res) => {
-    const parsedUrl = parse(req.url, true);
-    handle(req, res, parsedUrl);
-  }).listen(port, () => {
-    console.log(`
-    Your UI Library is LIVE! 
-    Open → http://localhost:${port}
+//   await app.prepare();
+
+//   createServer((req, res) => {
+//     const parsedUrl = parse(req.url, true);
+//     handle(req, res, parsedUrl);
+//   }).listen(port, () => {
+//     console.log(`
+//     Your UI Library is LIVE! 
+//     Open → http://localhost:${port}
     
-    Click any component → Copy code → Paste into your project!
+//     Click any component → Copy code → Paste into your project!
     
-    Press Ctrl+C to stop
-    `);
-  });
-}
+//     Press Ctrl+C to stop
+//     `);
+//   });
+// }

@@ -30,7 +30,7 @@ const Logo = ({ className = '' }) => {
                 fill="#111827"
                 letterSpacing="-1"
             >
-                modula ui
+                Modula UI
             </text>
 
             {/* Gradients */}

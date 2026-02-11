@@ -6,7 +6,7 @@ import { LoginDemo } from "@/components/login-template";
 
 export const components = {
   VideoConference,
-  GroupChat,
+  // GroupChat,
   LoginDemo,
   // ReservationsOverview,
   // FitnessOverview
