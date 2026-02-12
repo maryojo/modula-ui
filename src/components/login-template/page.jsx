@@ -11,11 +11,11 @@ import Image from "next/image"
 
 export default function LoginPage() {
     return (
-        <div className="dark font-sans w-full h-full flex flex-col lg:flex-row items-center justify-center lg:justify-end overflow-hidden bg-background text-foreground">
+        <div className="dark font-sans w-full min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-end overflow-hidden bg-background text-foreground">
             <ParticlesBackground />
 
-            <div className=" z-10 px-4 sm:px-6 md:px-20 py-6 md:py-12 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-28">
-                <div className="hidden md:block space-y-4 w-1/2">
+            <div className="w-full z-10 px-10 sm:px-6 lg:px-20 py-12 md:py-12 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-28">
+                <div className="hidden lg:block space-y-4 w-full lg:w-1/2">
                     <div className="flex items-center gap-4 mb-4">
                         <Image
                             src={logo}
@@ -27,7 +27,15 @@ export default function LoginPage() {
                     <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">Secure, Scalable and Seamless</h3>
                     <p className="text-sm sm:text-base md:text-lg text-muted-foreground">Empowering businesses with world-class cloud computing infrastructure and 99.9% uptime. Managed, monitored and optimized for your growth.</p>
                 </div>
-                <Card className="w-full sm:w-1/2 glass-dark">
+                <div className="lg:hidden flex justify-center mb-4">
+                    <Image
+                        src={logo}
+                        alt="Logo"
+                        width={65}
+                        height={65}
+                    />
+                </div>
+                <Card className="w-full md:w-[70%] lg:w-1/2 glass-dark">
                     <CardHeader className="space-y-1 ">
                         <CardTitle className="text-xl sm:text-2xl font-bold tracking-tight">Welcome back</CardTitle>
                         <CardDescription className="text-sm sm:text-base text-muted-foreground/80">
